@@ -153,10 +153,12 @@ input[type=file]::file-selector-button {
     background-color: #7dbcf4;
     color: #fff;
   }
-  
- p img {
-  display: block;
-  margin: 0 auto;
+
+p img {
+  	display: block;
+  	margin: 0 auto;
+  	width: 70%;
+  	height: auto;
 }
 
  #detail_page > #title{
@@ -171,4 +173,16 @@ input[type=file]::file-selector-button {
  	font-size: 13px;
  	float: right;
  }
- 
+.image-container {
+    max-width: 100%;
+    height: auto; 
+}
+.image-container img {
+    display: block;
+  	margin: 0 auto;
+  	width: 100%;
+  	height: auto;
+    margin-top: 10px;
+}
+
+

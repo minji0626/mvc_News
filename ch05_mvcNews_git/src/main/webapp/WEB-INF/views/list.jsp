@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="page-main" id="list">
-	<h2>뉴스 목록</h2>
+	<h1>뉴스 목록</h1>
 	<div class="align-right">
  		<input type="button" value="뉴스 작성" onclick="location.href='writeForm.do'">
 	</div>

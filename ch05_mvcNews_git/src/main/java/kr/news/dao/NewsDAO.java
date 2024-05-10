@@ -137,16 +137,25 @@ public class NewsDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql =  null;
+		String sub_sql = "";
+		int cnt = 0;
 		try {
 			conn = DBUtil.getConnection();
-			sql="UPDATE dailynews SET title=?, writer=?,email=?,article=?,filename=? WHERE num=?";
+			if(newsVO.getFilename()!= null && !newsVO.getFilename().isEmpty()) {
+				sub_sql +=", filename=?";
+			}
+			sql="UPDATE dailynews SET title=?, writer=?,email=?,article=?"+sub_sql+" WHERE num=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, newsVO.getTitle());
-			pstmt.setString(2, newsVO.getWriter());
-			pstmt.setString(3, newsVO.getEmail());
-			pstmt.setString(4, newsVO.getArticle());
-			pstmt.setString(5, newsVO.getFilename());
-			pstmt.setInt(6, newsVO.getNum());
+			pstmt.setString(++cnt, newsVO.getTitle());
+			pstmt.setString(++cnt, newsVO.getWriter());
+			pstmt.setString(++cnt, newsVO.getEmail());
+			pstmt.setString(++cnt, newsVO.getArticle());
+			if(newsVO.getFilename()!= null && !newsVO.getFilename().isEmpty()) {
+				// 파일이 업로드가 되었다면 ++cnt의 값은 5번, num => 6번이 될것이다
+				pstmt.setString(++cnt, newsVO.getFilename());
+			}
+			// 파일의 업로드가 없다면 if문이 실행되지 않기 때문에 번호가 5번이 된다.
+			pstmt.setInt(++cnt, newsVO.getNum());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception(e);

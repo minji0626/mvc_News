@@ -55,10 +55,11 @@
 		<label for="article">기사 내용</label>
 		<textarea rows="5" cols="40" id="article" name="article" class="input-check">${newsVO.article}</textarea>
 	</li>
-	<li>
-    <label for="filename">사진</label> 
-    <input type="file" id="filename" name="filename" class="input-check" accept="image/gif,image/png,image/jpeg">
-	</li>
+	<li class="image-container">
+        <label for="filename">사진</label> 
+        <input type="file" id="filename" name="filename" accept="image/gif,image/png,image/jpeg">
+        <img src="${pageContext.request.contextPath}/upload/${newsVO.filename}" alt="뉴스 이미지">
+    </li>
 
 
 </ul>
